@@ -10,8 +10,15 @@ def hello_world():
 
 
 # Metodo get que devuelve datos harcodeados como json
-
 @app.route("/datos", methods = ['GET'])
 def return_hardcoded_json():
-    return jsonify({'success': True, 'message' : "Este es un mensaje harcodeado del metodo get"})
+    # Abrir fichero en modo lectura
+    f = open("datos.txt", 'r')
+    # leer datos
+    mensaje = f.read()
+    # cerrar fichero
+    f.close()
+    # Devolver json con los datos
+    return jsonify({'success': True, 'message' : mensaje})
 
+ 
